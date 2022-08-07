@@ -20,7 +20,7 @@ const CANVAS_HEIGHT = 700;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
-ctx.fontSize = fontSize.value;
+ctx.fontSize = "${fontsize.value}px Pretendard-Regular";
 let isPainting = false;
 let isFilling = false;
 
@@ -51,7 +51,7 @@ function onlineWidthChange(event) {
 }
 
 function onFontSizeChange(event) {
-  ctx.fontSize = event.target.value;
+  ctx.fontSize = "${fontsize.value}px Pretendard-Regular";
 }
 
 function onColorChange(event) {
@@ -112,7 +112,7 @@ function onDoubleClick(event) {
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.font = "50px 'Pretendard-Regular'";
+    ctx.font = "50px 'Concert One'";
     ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
