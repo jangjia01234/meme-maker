@@ -8,77 +8,126 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <canvas></canvas>
-    <input id="line-width" type="range" min="1" max="10" value="5" step="0.1" />
-    <div>
-      <input id="color" type="color" />
-      <div
-        class="color-option"
-        style="background-color: #1abc9c"
-        data-color="#1abc9c"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #3498db"
-        data-color="#3498db"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #34495e"
-        data-color="#34495e"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #27ae60"
-        data-color="#27ae60"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #8e44ad"
-        data-color="#8e44ad"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #f1c40f"
-        data-color="#f1c40f"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #e74c3c"
-        data-color="#e74c3c"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #95a5a6"
-        data-color="#95a5a6"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #d35400"
-        data-color="#d35400"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #bdc3c7"
-        data-color="#bdc3c7"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #2ecc71"
-        data-color="#2ecc71"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #e67e22"
-        data-color="#e67e22"
-      ></div>
+    <div class="top-bar">
+      <div class="top-bar__left">
+        <h6>X</h6>
+      </div>
+      <div class="top-bar__colors">
+        <div class="color-options">
+          <div
+            class="color-option"
+            style="background-color: #34495e"
+            data-color="#34495e"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #95a5a6"
+            data-color="#95a5a6"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #3498db"
+            data-color="#3498db"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #1abc9c"
+            data-color="#1abc9c"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #27ae60"
+            data-color="#27ae60"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #f1c40f"
+            data-color="#f1c40f"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #e67e22"
+            data-color="#e67e22"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #e67e22"
+            data-color="#e67e22"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #e74c3c"
+            data-color="#e74c3c"
+          ></div>
+          <div
+            class="color-option"
+            style="background-color: #8e44ad"
+            data-color="#8e44ad"
+          ></div>
+        </div>
+      </div>
+      <div class="top-bar__right">
+        <button id="refresh-btn">
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </button>
+        <div class="filebox">
+          <label for="file"><i class="fa-solid fa-image"></i></label>
+          <input type="file" accept="image/*" id="file" />
+        </div>
+        <button id="save">
+          <i class="fa-solid fa-download"></i>
+        </button>
+        <input type="submit" id="share" value="" />
+      </div>
     </div>
-    <button id="mode-btn">Fill</button>
-    <button id="refresh-btn">Refresh</button>
-    <button id="eraser-btn">Erase</button>
-    <input type="file" accept="image/*" id="file" />
-    <input type="text" placeholder="Write and then double click" id="text" />
 
+    <div class="bottom">
+      <div class="tool-bar">
+        <div class="tool-bar__content">
+          <input type="text" placeholder="Text" id="text" />
+          <!-- <button id="mode-btn"><i class="fa-solid fa-fill"></i></button> -->
+          <button id="mode-btn">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/4579/4579093.png"
+            />
+          </button>
+          <!-- <button id="eraser-btn"><i class="fa-solid fa-eraser"></i></button> -->
+          <button id="eraser-btn">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/4579/4579352.png"
+            />
+          </button>
+          <input id="color" type="color" />
+        </div>
+      </div>
+      <div class="main">
+        <canvas></canvas>
+        <h6 class="brush">Brush</h6>
+        <input
+          id="line-width"
+          type="range"
+          min="1"
+          max="10"
+          value="5"
+          step="0.1"
+        />
+        <h6 class="font">Font</h6>
+        <input
+          id="font-size"
+          type="range"
+          min="1"
+          max="10"
+          value="5"
+          step="0.1"
+        />
+      </div>
+    </div>
+
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/3b88ea5e82.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>

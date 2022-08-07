@@ -1,3 +1,5 @@
+const shareBtn = document.getElementById("share");
+const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
@@ -8,15 +10,17 @@ const colorOptions = Array.from(
 );
 const color = document.getElementById("color");
 const lineWidth = document.getElementById("line-width");
+const fontSize = document.getElementById("font-size");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-const CANVAS_WIDTH = 600;
-const CANVAS_HEIGHT = 600;
+const CANVAS_WIDTH = 1000;
+const CANVAS_HEIGHT = 700;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
+ctx.fontSize = fontSize.value;
 let isPainting = false;
 let isFilling = false;
 
@@ -46,6 +50,10 @@ function onlineWidthChange(event) {
   ctx.lineWidth = event.target.value;
 }
 
+function onFontSizeChange(event) {
+  ctx.fontSize = event.target.value;
+}
+
 function onColorChange(event) {
   ctx.strokeStyle = event.target.value;
   ctx.fillStyle = event.target.value;
@@ -64,7 +72,7 @@ function onModeClick() {
     modeBtn.innerText = "Fill";
   } else {
     isFilling = true;
-    modeBtn.innerText = "Draw";
+    modeBtn.innerHTML = "Draw";
   }
 }
 
@@ -91,6 +99,7 @@ function onFileChange(event) {
   const file = event.target.files[0];
   const url = URL.createObjectURL(file);
   const image = new Image();
+  // document.createElement("img") 와 같음!
   image.src = url;
   image.onload = function () {
     ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -103,10 +112,19 @@ function onDoubleClick(event) {
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.font = "50px 'KOTRAHOPE'";
+    ctx.font = "50px 'Pretendard-Regular'";
     ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
+}
+
+function onSaveClick() {
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");
+  // a태그(a href~) 와 같은 것
+  a.href = url;
+  a.download = "myDrawing.png";
+  a.click();
 }
 
 canvas.addEventListener("dblclick", onDoubleClick);
@@ -117,6 +135,7 @@ canvas.addEventListener("mouseleave", cancelPainting);
 canvas.addEventListener("click", onCanvasClick);
 
 lineWidth.addEventListener("change", onlineWidthChange);
+fontSize.addEventListener("change", onFontSizeChange);
 color.addEventListener("change", onColorChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
@@ -125,3 +144,8 @@ modeBtn.addEventListener("click", onModeClick);
 refreshBtn.addEventListener("click", onRefreshClick);
 eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
+saveBtn.addEventListener("click", onSaveClick);
+shareBtn.addEventListener("click", () => {
+  const pageUrl = "myDrawing.png";
+  window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+});
