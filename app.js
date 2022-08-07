@@ -20,7 +20,7 @@ const CANVAS_HEIGHT = 700;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
-ctx.fontSize = "${fontsize.value}px Pretendard-Regular";
+ctx.font = "${fontsize.value}px UhBeeyoongdi";
 let isPainting = false;
 let isFilling = false;
 
@@ -50,9 +50,11 @@ function onlineWidthChange(event) {
   ctx.lineWidth = event.target.value;
 }
 
-function onFontSizeChange(event) {
-  ctx.fontSize = "${fontsize.value}px Pretendard-Regular";
-}
+// function onFontSizeChange() {
+//   ctx.font = "${fontsize.value}px 'UhBeeyoongdi'";
+// }
+
+// console.log(ctx.font);
 
 function onColorChange(event) {
   ctx.strokeStyle = event.target.value;
@@ -112,10 +114,11 @@ function onDoubleClick(event) {
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.font = "50px 'Concert One'";
     ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
+    ctx.font = "${fontsize.value}px 'UhBeeyoongdi'";
   }
+  ctx.font = "50px 'UhBeeyoongdi'";
 }
 
 function onSaveClick() {
@@ -135,7 +138,7 @@ canvas.addEventListener("mouseleave", cancelPainting);
 canvas.addEventListener("click", onCanvasClick);
 
 lineWidth.addEventListener("change", onlineWidthChange);
-fontSize.addEventListener("change", onFontSizeChange);
+// fontSize.addEventListener("change", onFontSizeChange);
 color.addEventListener("change", onColorChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
