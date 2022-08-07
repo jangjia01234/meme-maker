@@ -1,6 +1,5 @@
 @import "reset.css";
 
-/* @import url("https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap"); */
 @font-face {
   font-family: "UhBeeyoongdi";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeyoongdi.woff")
@@ -17,7 +16,6 @@ html {
   font-family: "UhBeeyoongdi";
   font-weight: 400;
   color: rgb(55, 37, 75);
-  /* font-family: "Rubik Bubbles", cursive; */
 }
 
 body {

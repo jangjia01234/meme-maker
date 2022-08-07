@@ -50,12 +50,6 @@ function onlineWidthChange(event) {
   ctx.lineWidth = event.target.value;
 }
 
-// function onFontSizeChange() {
-//   ctx.font = "${fontsize.value}px 'UhBeeyoongdi'";
-// }
-
-// console.log(ctx.font);
-
 function onColorChange(event) {
   ctx.strokeStyle = event.target.value;
   ctx.fillStyle = event.target.value;
